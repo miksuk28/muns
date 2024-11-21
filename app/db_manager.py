@@ -9,7 +9,7 @@ class DatabaseConnection:
         self._conn =    sqlite3.connect(self._db_file)
 
 
-    def id(self):
+    def genid(self):
         return str(uuid4())
 
 
