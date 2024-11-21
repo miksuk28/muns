@@ -11,16 +11,16 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS items (
     id              TEXT PRIMARY KEY NOT NULL UNIQUE,
-    expense_id      INTEGER NOT NULL,
-    cost_bearer_id  INTEGER,
+    expenseId       INTEGER NOT NULL,
+    costBearerId    INTEGER,
     name            TEXT    NOT NULL,
     price           INTEGER NOT NULL,
 
-    UNIQUE(expense_id, cost_bearer_id, id),
+    UNIQUE(expenseId, costBearerId, id),
 
     FOREIGN KEY (expense_id)
     REFERENCES expenses (id) ON DELETE CASCADE,
 
-    FOREIGN KEY (cost_bearer_id)
+    FOREIGN KEY (costBearerId)
     REFERENCES users (id)
 );
