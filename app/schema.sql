@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS expenses (
-    id TEXT PRIMARY KEY NOT NULL UNIQUE,
+    id TEXT PRIMARY KEY NOT NULL UNIQUE
 );
 
 
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS items (
 
     UNIQUE(expenseId, costBearerId, id),
 
-    FOREIGN KEY (expense_id)
+    FOREIGN KEY (expenseId)
     REFERENCES expenses (id) ON DELETE CASCADE,
 
     FOREIGN KEY (costBearerId)
