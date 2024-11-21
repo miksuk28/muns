@@ -1,6 +1,5 @@
 from db_manager import DatabaseConnection
 from db_operations import Users as sql
-from uuid import uuid4
 
 class Expense(DatabaseConnection):
     def __init__(self, id):
@@ -26,7 +25,6 @@ class Expense(DatabaseConnection):
         with self.cur() as cur:
             cur.execute(sql.GET_ITEMS, (self.id,))
             self._items = cur.fetchall()
-
 
 
 
