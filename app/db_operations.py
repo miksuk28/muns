@@ -4,6 +4,12 @@ class Users:
         VALUES (:id, :username)
     '''
 
+    GET_USER = '''
+        SELECT username
+        FROM users
+        WHERE id=?
+    '''
+
 
 class Expenses:
     GET_ITEMS = '''

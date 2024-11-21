@@ -28,3 +28,4 @@ class DatabaseConnection:
 
         finally:
             _cur.close()
+
