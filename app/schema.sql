@@ -11,8 +11,8 @@ CREATE TABLE IF NOT EXISTS users (
 
 CREATE TABLE IF NOT EXISTS items (
     id              TEXT PRIMARY KEY NOT NULL UNIQUE,
-    expenseId       INTEGER NOT NULL,
-    costBearerId    INTEGER,
+    expenseId       TEXT NOT NULL,
+    costBearerId    TEXT NOT NULL,
     name            TEXT    NOT NULL,
     price           INTEGER NOT NULL,
 

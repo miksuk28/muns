@@ -4,14 +4,16 @@ class Users:
         VALUES (:id, :username)
     '''
 
-    NEW_EXPENSE = '''
-        INSERT INTO expenses (id)
-        VALUES (id)
-    '''
 
+class Expenses:
     GET_ITEMS = '''
         SELECT i.name AS item, i.price, u.id AS userId, u.username
         FROM items i
         LEFT JOIN users u ON i.costBearerId = u.id
         WHERE expenseId=?
+    '''
+
+    NEW_EXPENSE = '''
+        INSERT INTO expenses (id)
+        VALUES (id)
     '''
