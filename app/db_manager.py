@@ -29,3 +29,9 @@ class DatabaseConnection:
         finally:
             _cur.close()
 
+    def rows_to_dict(self, obj):
+        new_list = []
+        for item in obj:
+            new_list.append(dict(item))
+
+        return new_list
