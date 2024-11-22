@@ -10,6 +10,12 @@ class Users:
         WHERE id=?
     '''
 
+    QUERY_USERS = '''
+        SELECT id, username
+        FROM users
+        WHERE username LIKE %?%
+    '''
+
 
 class Expenses:
     GET_ITEMS = '''

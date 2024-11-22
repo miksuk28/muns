@@ -33,6 +33,10 @@ class User(DatabaseConnection):
 
 
     @staticmethod
-    def query_users(username):
-        with self.cur(commit=False) as cur:
+    def query_users(username=""):
+        user_obj = User()
+        with user_obj.cur(commit=False) as cur:
             cur.execute(sql_u.QUERY_USERS, (username,))
+            users = cur.fetchall()
+
+            return self.rows_to_dict(users)
