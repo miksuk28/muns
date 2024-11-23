@@ -13,7 +13,9 @@ class Users:
     QUERY_USERS = '''
         SELECT id, username
         FROM users
-        WHERE username LIKE %?%
+        WHERE username LIKE ?
+        OR
+        id=?
     '''
 
 
