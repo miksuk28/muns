@@ -33,10 +33,12 @@ class User(DatabaseConnection):
 
 
     @staticmethod
-    def query_users(username=""):
+    def query_users(username="", id=""):
+        # since staticmeth, create obj instance to access db methods
         user_obj = User()
         with user_obj.cur(commit=False) as cur:
-            cur.execute(sql_u.QUERY_USERS, (username,))
+            cur.execute(sql_u.QUERY_USERS, (username, id))
             users = cur.fetchall()
-
-            return self.rows_to_dict(users)
+            
+            # return as list of dicts
+            return user_obj.rows_to_dict(users)
