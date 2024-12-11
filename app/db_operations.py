@@ -41,3 +41,10 @@ class Expenses:
         DELETE FROM expenses
         WHERE id=?
     '''
+
+    GET_USER_ID = '''
+        SELECT id
+        FROM users
+        WHERE username=?
+        LIMIT 1
+    '''

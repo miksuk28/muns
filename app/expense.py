@@ -24,6 +24,18 @@ class Expense(DatabaseConnection):
         self.id = id
         #self._init()
 
+    
+    def _get_user_id(self, username):
+        '''get user_id by username, raise UserNotFound if not found'''
+        with self.cur() as cur:
+            cur.execute(sql_e.GET_USER_ID, (username))
+            user_id = cur.fetchone()
+
+            if user_id is None:
+                raise UserNotFound(username)
+            
+            return user_id["id"]
+
 
     def _get_items(self):
         with self.cur() as cur:
