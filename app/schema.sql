@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS items (
     name            TEXT    NOT NULL,
     price           INTEGER NOT NULL,
 
-    UNIQUE(expenseId, costBearerId, id),
+    UNIQUE(expenseId, costBearerId, name),
 
     FOREIGN KEY (expenseId)
     REFERENCES expenses (id) ON DELETE CASCADE,
