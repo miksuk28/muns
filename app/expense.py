@@ -1,6 +1,23 @@
 from db_manager import DatabaseConnection
 from db_operations import Expenses  as sql_e
 
+### CUSTOM EXCEPTIONS - MOVE TO SEPARATE FILE IN THE FUTURE ###
+class UserNotFound(Exception):
+    """Exception raised when user is not found by name or id
+
+    Attributes:
+        user_id - user id which was not found
+        suername - username which was not found
+    """
+
+    def __init__(self, id=None, username=None, message="User cannot be found in database"):
+        self.id = id
+        self.username = username
+        super().__init__(self.message)
+
+### END CUSTOM EXCEPTIONS ###
+
+
 class Expense(DatabaseConnection):
     def __init__(self, id=None):
         super().__init__()
