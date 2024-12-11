@@ -27,7 +27,17 @@ class Expenses:
         WHERE expenseId=?
     '''
 
+    ADD_ITEM = '''
+        INSERT INTO items (id, expenseId, costBearerId, name, price)
+        VALUES (:id, :expenseId, :costBearerId, :name, :price)
+    '''
+
     NEW_EXPENSE = '''
         INSERT INTO expenses (id)
-        VALUES (id)
+        VALUES (?)
+    '''
+
+    DELETE_EXPENSE = '''
+        DELETE FROM expenses
+        WHERE id=?
     '''

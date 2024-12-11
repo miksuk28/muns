@@ -1,27 +1,12 @@
 from db_manager import DatabaseConnection
-from db_operations import Users     as sql_u
 from db_operations import Expenses  as sql_e
 
 class Expense(DatabaseConnection):
-    def __init__(self, id):
+    def __init__(self, id=None):
         super().__init__()
         self.id = id
         #self._init()
 
-
-    '''
-    def _init(self):
-        # if no expense id passed to class, create new expense
-        if self.id is None:
-            # random uuid
-            self.id = self.genid()
-            with self.cur() as cur:
-                cur.execute(sql_e.NEW_EXPENSE, self.id)
-                return
-
-        with self.cur(commit=False) as cur:
-            cur.execute()
-    '''    
 
     def _get_items(self):
         with self.cur() as cur:
@@ -29,12 +14,23 @@ class Expense(DatabaseConnection):
             self._items = cur.fetchall()
 
 
-    def create_user(self, username):
-        id = self.genid()
+    def add_item(self, user_id, name, price):
         with self.cur() as cur:
-            cur.execute(sql_u.CREATE_USER,
-                {"id": id,
-                "username": username}
-            )
+            
 
-            return id
+
+
+    def delete(self):
+        if self.id is not None:
+            with self.cur() as cur:
+                cur.execute(sql_e.DELETE_EXPENSE, (self.id,))
+                self.id = None
+
+
+    @staticmethod
+    def new():
+        exp = Expense()
+        id = exp.genid()
+        with exp.cur() as cur:
+            cur.execute(sql_e.NEW_EXPENSE, (id,))
+            return Expense(id)
