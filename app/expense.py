@@ -43,9 +43,19 @@ class Expense(DatabaseConnection):
             self._items = cur.fetchall()
 
 
-    def add_item(self, user_id, name, price):
+    def add_item(self, username, name, price):
+        user_id = self._get_user_id(username)
+        item_id = self.genid()
         with self.cur() as cur:
-            
+            cur.execute(sql_e.ADD_ITEM, {
+                "id":            item_id,
+                "expenseId":     self.id,
+                "costBearerId":  user_id,
+                "name":          name,
+                "price":         price
+            })
+        
+        return item_id
 
 
 
